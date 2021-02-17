@@ -26,3 +26,9 @@ main proc
     int 21h
     mov dl,'d'
     int 21h
+
+    exit:
+        mov ah,4ch
+        int 21h
+        main endp
+end main
