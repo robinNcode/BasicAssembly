@@ -1,9 +1,13 @@
-;Adding two number
+;Summation of two numbers greater than 10
+;MD Shahin Mia Robin
+;CSE1901016113
+;16A3
 
 .model large
 .stack 100h
 
 .data
+prb db 9,9,'Summation of Two number$'
 entry db 10,13,'Enter a number:$'
 resMsg db 10,13,'Num1 + Num2 = $'
 
@@ -18,6 +22,12 @@ main proc
     
     mov ax,@data
     mov ds,ax
+    
+    
+    ;input 1st number
+    mov ah,9
+    lea dx,prb ;message
+    int 21h
     
     ;input 1st number
     mov ah,9
