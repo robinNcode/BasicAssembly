@@ -4,10 +4,10 @@ LEA DX,STR
 INT 21H
 ENDM
 DATA SEGMENT
-    MSG1 DB \"ENTER YOUR STRING : $\"
-    MSG2 DB \"CONVERTED STRING IS : $\"
-    STR1 DB 20 DUP(\'$\')
-    LINE DB 10,13,\'$\'
+    MSG1 DB "ENTER YOUR STRING : $"
+    MSG2 DB "CONVERTED STRING IS : $"
+    STR1 DB 20 DUP('$')
+    LINE DB 10,13,'$'
 DATA ENDS
 
 CODE SEGMENT
@@ -24,15 +24,15 @@ START:
         MOV CL,BYTE PTR[STR1+1]
         LEA SI,STR1+2
     L1: MOV AH,BYTE PTR[SI]
-        CMP AH,\'A\'
+        CMP AH,'A'
         JL L4
-        CMP AH,\'Z\'
+        CMP AH,'Z'
         JG L2
         ADD BYTE PTR[SI],32
         JMP L3
-     L2:CMP AH,\'a\'
+     L2:CMP AH,'a'
         JL L4
-        CMP AH,\'z\'
+        CMP AH,'z'
         JG L4
         SUB BYTE PTR[SI],32
      L3:INC SI

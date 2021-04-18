@@ -1,0 +1,85 @@
+;GREATEST BETWEEN 3 NUMBERS
+;MD SHAHIN MIA ROBIN
+;CSE1901016113
+;16A3
+
+.MODEL LARGE
+.STACK 100H
+
+.DATA
+PRB DB 9,9,'<< GREATEST BETWEEN THREE NUMBERS >>$'
+ENTRY DB 10,13,'ENTER A NUMBER :$'
+RESULTMSG DB 10,13,'THE GREATEST NUM IS :$'
+
+.CODE
+
+MAIN PROC
+    
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    ;INPUT NUM1
+    LEA DX,PRB ;MESSAGE
+    MOV AH,9
+    INT 21H
+    
+    ;INPUT NUM1
+    LEA DX,ENTRY ;MESSAGE
+    MOV AH,9
+    INT 21H
+    
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+    
+    ;INPUT NUM2
+    LEA DX,ENTRY ;MESSAGE
+    MOV AH,9
+    INT 21H
+    
+    MOV AH,1
+    INT 21H
+    MOV BH,AL
+    
+    ;COMPARING 1ST & 2ND INPUT
+    CMP BL,BH
+    JGE PROTHOMBORO
+    JMP DITIYOBORO
+    
+   
+    PROTHOMBORO:
+    JGE PRINT1
+     
+    
+    DITIYOBORO:
+    JGE PRINT2
+    
+    
+    
+    
+    PRINT1:
+    LEA DX,RESULTMSG ;MESSAGE
+    MOV AH,9
+    INT 21H
+    
+    MOV DL,BL
+    MOV AH,2
+    INT 21H
+    JMP EXIT
+    
+    PRINT2:
+    LEA DX,RESULTMSG ;MESSAGE
+    MOV AH,9
+    INT 21H
+    
+    MOV DL,BH
+    MOV AH,2
+    INT 21H
+    JMP EXIT
+    
+    EXIT:
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+
+END MAIN                          

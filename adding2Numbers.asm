@@ -24,7 +24,7 @@ main proc
     mov ds,ax
     
     
-    ;input 1st number
+    ;intro msg
     mov ah,9
     lea dx,prb ;message
     int 21h
